@@ -1,0 +1,6 @@
+smolagents
+smolagents[litellm]
+python-dotenv
+transformers>=4.36.0
+soundfile
+requests 
