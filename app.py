@@ -18,9 +18,12 @@ def get_current_weather(city: str) -> str:
     Gets the real-time current weather for a given city using the OpenWeatherMap API.
     """
     # --- NEW: Live API Call ---
+
     if not OPENWEATHER_API_KEY:
         return "Error: OpenWeatherMap API key is not set."
-
+    elif not city:
+        return "Error: City name is required."
+    
     base_url = "http://api.openweathermap.org/data/2.5/weather"
     params = {
         "q": city,
@@ -149,14 +152,31 @@ if __name__ == "__main__":
         print("Error: GOOGLE_API_KEY or OPENWEATHER_API_KEY not found.")
         print("Please make sure both are set in your .env file.")
     else:
-        agent = MyAgent()
+        # Get the city from the user first
+        city_query = input("Please enter a city name (e.g., London, Tokyo): ")
+
+        if city_query:
+            # Initialize the agent
+            agent = MyAgent()
+            
+            # Construct the question for the agent using the user's input
+            full_query = f"What's the weather in {city_query}?"
+            
+            # Run the agent with the constructed question
+            response = agent.run(full_query)
+            
+            # Print the final response
+            print("\n--- Final Response ---")
+            print(response)
+        else:
+            print("No city entered. Exiting.")
         
         # Example 1: Query that now uses a live API
-        response = agent.run("What's the weather in London?")
-        print("\n--- Final Response ---")
-        print(response)
+        #response = agent.run("What's the weather in London?")
+        #print("\n--- Final Response ---")
+        #print(response)
         
         # Example 2: Query that chains tools with a live API call at the end
-        response = agent.run("What's the weather in the city with the eiffel tower?")
-        print("\n--- Final Response ---")
-        print(response)
+        #response = agent.run("What's the weather in the city with the eiffel tower?")
+        #print("\n--- Final Response ---")
+        #print(response)
