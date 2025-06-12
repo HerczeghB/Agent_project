@@ -10,7 +10,7 @@ This project is currently in its early stages of development.
 
 ## Current Functionality
 
-* **Weather Search:** The agent can be provided with a city name to fetch and display the current weather information using OpenWeather API(https://openweathermap.org/).
+* **Weather Search:** The agent can be provided with a city name to fetch and display the current weather information using [OpenWeather API](https://openweathermap.org/).
 * **Calculator:** The agent can perform calculations.
 
 ## Future Implementations
